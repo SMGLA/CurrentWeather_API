@@ -1,9 +1,9 @@
-// jshint esversion: 6
+//jshint esversion: 6
 const express = require('express');
 const app = express();
 const https = require('https');
 
-app.get("/", (req, res) => {
+app.get("/", (req,res) => {
 
   const url = "https://api.openweathermap.org/data/2.5/weather?q=Glasgow,uk&appid=c3f53dee4a3db3b3e19c1addfba0f1a4&units=metric";
   https.get(url, (response) => {
@@ -21,7 +21,7 @@ app.get("/", (req, res) => {
       console.log(icon);
 
     res.write("<h1>Weather Forecast</h1>");
-    res.write("<p>In Glasgow, the temperature is " + temp + " degrees and the weather is " + desc + ".</p>");
+    res.write("<p>Current temperature in Glasgow is " + temp + " degrees, with " + desc + ".</p>");
     res.write("<img src='http://openweathermap.org/img/wn/" + icon + "@2x.png'>");
     res.send();
   });
